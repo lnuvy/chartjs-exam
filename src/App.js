@@ -6,7 +6,7 @@ import StackedBarChartWithGroups from './components/BarChart/StackedBarChartWith
 import FloatingBarChart from './components/BarChart/FloatingBarChart';
 import BarChartBoarderRadius from'./components/BarChart/BarChartBoarderRadius';
 
-import LineChart from './LineChart'
+import MultiAxisLineChart from './components/LineChart/MultiAxisLineChart';
 import Layout from './Layout';
 
 function App() {
@@ -22,6 +22,7 @@ function App() {
       <StackedBarChartWithGroups data={data} labels={labels} />
       <FloatingBarChart data={data} labels={labels} />
       <BarChartBoarderRadius data={data} labels={labels} />
+      <MultiAxisLineChart data={data} labels={labels} />
     </Layout>
   );
 }
