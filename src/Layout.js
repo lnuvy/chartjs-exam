@@ -9,7 +9,7 @@ function Layout(props) {
 
   const myChildren = children.map((child) => {
     const childs = {
-      border: "1px solid rgba(0, 0, 225, 0.8)",
+      border: "1px solid rgba(0, 0, 225, 1)",
     };
     return (
       <div style={childs}>

@@ -5,6 +5,8 @@ import LineChart from './LineChart'
 import Layout from './Layout';
 import StackedBarChart from './StackedBarChart';
 import StackedBarChartWithGroups from './StackedBarChartWithGroups';
+import FloatingBarChart from './FloatingBarChart';
+import BarChartBoarderRadius from'./BarChartBoarderRadius';
 
 function App() {
   const data = [50, 40, 30, 35, 40]
@@ -17,6 +19,8 @@ function App() {
       <LineChart data={data} labels={labels} />
       <StackedBarChart data={data} labels={labels} />
       <StackedBarChartWithGroups data={data} labels={labels} />
+      <FloatingBarChart data={data} labels={labels} />
+      <BarChartBoarderRadius data={data} labels={labels} />
     </Layout>
   );
 }
