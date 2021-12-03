@@ -28,17 +28,14 @@ function VerticalBarChart(props) {
         labels: labels,
         datasets: [
           {
-            label: "월별 버스 이용량 통계",
             data: data,
             backgroundColor: 'rgba(255, 0, 0, 0.3)'
           },
           {
-            label: "월별 버스 이용량 통계",
             data: data,
             backgroundColor: 'rgba(0, 255, 0, 0.3)'
           },
           {
-            label: "월별 버스 이용량 통계",
             data: data,
             backgroundColor: 'rgba(0, 0, 255, 0.3)'
           },

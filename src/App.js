@@ -4,6 +4,7 @@ import HorizontalBarChart from './HorizontalBarChart'
 import LineChart from './LineChart'
 import Layout from './Layout';
 import StackedBarChart from './StackedBarChart';
+import StackedBarChartWithGroups from './StackedBarChartWithGroups';
 
 function App() {
   const data = [50, 40, 30, 35, 40]
@@ -15,6 +16,7 @@ function App() {
       <HorizontalBarChart data={data} labels={labels} />
       <LineChart data={data} labels={labels} />
       <StackedBarChart data={data} labels={labels} />
+      <StackedBarChartWithGroups data={data} labels={labels} />
     </Layout>
   );
 }
