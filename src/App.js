@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import axios from 'axios';
+
 import VerticalBarChart from './components/BarChart/VerticalBarChart';
 import HorizontalBarChart from './components/BarChart/HorizontalBarChart'
 import StackedBarChart from './components/BarChart/StackedBarChart';
