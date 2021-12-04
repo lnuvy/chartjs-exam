@@ -6,7 +6,7 @@ import HorizontalBarChart from './components/BarChart/HorizontalBarChart'
 import StackedBarChart from './components/BarChart/StackedBarChart';
 import StackedBarChartWithGroups from './components/BarChart/StackedBarChartWithGroups';
 import FloatingBarChart from './components/BarChart/FloatingBarChart';
-import BarChartBoarderRadius from'./components/BarChart/BarChartBoarderRadius';
+import BarChartBoarderRadius from './components/BarChart/BarChartBoarderRadius';
 
 import LineChart from './components/LineChart/LineChart';
 import MultiAxisLineChart from './components/LineChart/MultiAxisLineChart';
