@@ -80,6 +80,7 @@ function App() {
   return (
     <Layout>
       <VerticalBarChart monthBasePassenger={monthBasePassenger} />
+      <HorizontalBarChart monthBasePassenger={monthBasePassenger} />
       <LineChart data={data} labels={labels} />
       <StackedBarChart data={data} labels={labels} />
       <StackedBarChartWithGroups data={data} labels={labels} />

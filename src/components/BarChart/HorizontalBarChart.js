@@ -2,8 +2,7 @@ import Chart from 'chart.js/auto';
 import { useEffect, useRef } from 'react'
 
 function HorizontalBarChart(props) {
-  const {data, labels} = props
-
+  const { monthBasePassenger: mp } = props
   const canvasDom = useRef(null);
 
   useEffect(() => {
@@ -11,10 +10,10 @@ function HorizontalBarChart(props) {
     const horizontalBarChart = new Chart(ctx, {
       type: "bar",
       data: {
-        labels: labels,
+        labels: mp.map((row) => (row.month)),
         datasets: [
           {
-            data: data,
+            data: mp.map((row) => (row.data.sum)),
           },
         ],
       },
@@ -26,7 +25,7 @@ function HorizontalBarChart(props) {
     return () => {
       horizontalBarChart.destroy();
     }
-  }, [])
+  }, [mp])
 
   return (
     <div>
