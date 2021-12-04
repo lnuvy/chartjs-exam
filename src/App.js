@@ -37,7 +37,7 @@ function App() {
     getCsvWithCallback()
   }, [getCsvWithCallback])
 
-  // data 처리 useEffect
+  // mp data 처리 useEffect
   useEffect(() => {
     if (Array.isArray(csv) && csv.length) {
       const monthBase = csv.reduce((acc, cur) => {
@@ -75,6 +75,59 @@ function App() {
         }))
       setMonthBasePassenger(monthData)
     }
+  }, [csv])
+
+
+  // bp data 처리 useEffect
+  useEffect(() => {
+    if (Array.isArray(csv) && csv.length) {
+      const busBase = csv.reduce((acc, cur) => {
+        const busNo = cur['노선']
+        const month = cur['년월']
+        const sum = Number(cur['합계'])
+        const type = cur['구분']
+
+        if (!acc.has(busNo)) {
+          const monthMap = new Map()
+          acc.set(
+            busNo,
+            monthMap.set(month, { // 형태 만듬
+              getIn: 0,
+              getOff: 0
+            })
+          )
+        }
+
+        const thisBus = acc.get(busNo)
+        const data = thisBus.get(month) // month 안의 value 가져올수있음
+        const getIn = data ? Number(data['getIn']) : 0
+        const getOff = data ? Number(data['getOff']) : 0
+
+        thisBus.set(month, {
+          getIn: type === '승차' ? getIn + sum : getIn,
+          getOff: type === '하차' ? getOff + sum : getOff,
+        })
+
+        return acc;
+
+      }, new Map())
+      const bp = Array.from(busBase, ([key, value]) => {
+        return {
+          busNo: key,
+          data: Array.from(value, ([month, data]) => {
+            return {
+              month,
+              ...data //스프레드연산자 사용시 아래와 같은 효과
+              // getIn: data.getIn,  
+              // getOff: data.getOff
+            }
+          })
+
+        }
+      })
+      setBusBasePassenger(bp);
+    }
+
   }, [csv])
 
   return (
