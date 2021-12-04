@@ -12,6 +12,8 @@ import LineChart from './components/LineChart/LineChart';
 import MultiAxisLineChart from './components/LineChart/MultiAxisLineChart';
 import SteppedLineChart from './components/LineChart/SteppedLineChart';
 
+import ScatterChart from './components/OtherChart/ScatterChart';
+
 import Layout from './Layout';
 
 function App() {
@@ -19,6 +21,7 @@ function App() {
   const labels = [2017, 2018, 2019, 2020, 2021]
   const [csv, setCsv] = useState([])
   const [monthBasePassenger, setMonthBasePassenger] = useState([])
+  const [busBasePassenger, setBusBasePassenger] = useState([])
 
   const getCsvWithCallback = useCallback(async () => {
     try {
@@ -141,6 +144,7 @@ function App() {
       <BarChartBoarderRadius data={data} labels={labels} />
       <MultiAxisLineChart data={data} labels={labels} />
       <SteppedLineChart data={data} labels={labels} />
+      <ScatterChart busBasePassenger={busBasePassenger} />
     </Layout>
   );
 }
