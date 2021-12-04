@@ -6,46 +6,43 @@ import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 
 function VerticalBarChart(props) {
-  const {data, labels} = props
-
+  const { monthBasePassenger: mp } = props;
   const canvasDom = useRef(null);
 
-  // const RandomNumber = (arr) => {
-  //   let tmp = []
-  //   for(var i=0; i<arr.length; i++) {
-  //     let r = Math.random() * 5;
-  //     tmp[i] = arr[r]
-  //   }
-  //   return tmp;
-  // }
-
   useEffect(() => {
-
     const ctx = canvasDom.current.getContext('2d');
     const verticalBarChart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: labels,
+        labels: mp.map((row) => (row.month)),
         datasets: [
           {
-            data: data,
+            label: "월별 버스 이용량 통계",
+            data: mp.map((row) => (row.data.sum)),//dfdf
             backgroundColor: 'rgba(255, 0, 0, 0.3)'
           },
           {
-            data: data,
+            data: mp.map((row) => (row.data.getIn)),
             backgroundColor: 'rgba(0, 255, 0, 0.3)'
           },
           {
-            data: data,
+            data: mp.map((row) => (row.data.getOff)),
             backgroundColor: 'rgba(0, 0, 255, 0.3)'
           },
         ],
+      },
+      options: {
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
       },
     });
     return () => {
       verticalBarChart.destroy();
     }
-  }, []);
+  }, [mp]);
 
   return (
     <div>

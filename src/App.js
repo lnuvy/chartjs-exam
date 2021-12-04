@@ -26,7 +26,7 @@ function App() {
       const axiosObj = await axios.get(url)
       const res = await axiosObj.data
       setCsv(res)
-      // console.log(csv);
+      console.log(csv);
     } catch (e) {
       console.log(e)
     }
@@ -79,8 +79,7 @@ function App() {
 
   return (
     <Layout>
-      <VerticalBarChart data={data} labels={labels} />
-      <HorizontalBarChart data={data} labels={labels} />
+      <VerticalBarChart monthBasePassenger={monthBasePassenger} />
       <LineChart data={data} labels={labels} />
       <StackedBarChart data={data} labels={labels} />
       <StackedBarChartWithGroups data={data} labels={labels} />
