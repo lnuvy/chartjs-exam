@@ -19,6 +19,11 @@ function HorizontalBarChart(props) {
       },
       options: {
         indexAxis: "y",
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
       },
     });
 
