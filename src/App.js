@@ -15,8 +15,37 @@ import SteppedLineChart from './components/LineChart/SteppedLineChart';
 import Layout from './Layout';
 
 function App() {
-  const data = [50, 40, 30, 35, 40]
-  const labels = [2017, 2018, 2019, 2020, 2021];
+  const data = [50, 30, 30, 35, 40]
+  const labels = [2017, 2018, 2019, 2020, 2021]
+  const [csv, setCsv] = useState([1, 2, 3, 4])
+
+  const getCsvWithCallback = useCallback(async () => {
+    try {
+      const url = 'http://localhost:3001/csv'
+      const axiosObj = await axios.get(url)
+      const res = await axiosObj.data
+      setCsv(res)
+      // console.log(csv);
+    } catch (e) {
+      console.log(e)
+    }
+  }, [])
+
+  useEffect(() => {
+    async function fetchData() {
+      // try {
+      //   const url = 'http://localhost:3001/csv'
+      //   const axiosObj = await axios.get(url)
+      //   const res = await axiosObj.data
+      //   setCsv(res)
+      //   console.log(csv);
+      // } catch (e) {
+      //   console.log(e)
+      // }
+      getCsvWithCallback();
+    }
+    fetchData()
+  }, [getCsvWithCallback()])
 
   return (
     <Layout>
