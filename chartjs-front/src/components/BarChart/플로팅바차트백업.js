@@ -2,8 +2,7 @@ import Chart from 'chart.js/auto';
 import { useEffect, useRef } from 'react'
 
 function FloatingBarChart(props) {
-  const { data, labels } = props
-
+  const { monthBasePassenger: mp } = props;
   const canvasDom = useRef(null);
 
   useEffect(() => {
@@ -11,23 +10,23 @@ function FloatingBarChart(props) {
     const floatingBarChart = new Chart(ctx, {
       type: "bar",
       data: {
-        labels: labels,
+        labels: mp.map((row) => (row.month)),
         datasets: [
           {
-            data: data.map(() => {
-              return [10, -20]
+            data: mp.map((row) => {
+              return [0, row.data.sum,]
             }),
             backgroundColor: 'rgba(255, 0, 0, 0.3)'
           },
           {
-            data: data.map(() => {
-              return [10, -20]
+            data: mp.map((row) => {
+              return [0, row.data.getIn]
             }),
             backgroundColor: 'rgba(0, 0, 255, 0.3)'
           },
           {
-            data: data.map(() => {
-              return [10, -20]
+            data: mp.map((row) => {
+              return [0, row.data.getOff]
             }),
             backgroundColor: 'rgba(0, 255, 0, 0.3)'
           },
@@ -48,7 +47,7 @@ function FloatingBarChart(props) {
     return () => {
       floatingBarChart.destroy();
     }
-  }, [])
+  }, [mp])
 
   return (
     <div>

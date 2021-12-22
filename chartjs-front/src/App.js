@@ -22,12 +22,14 @@ function App() {
   const [csv, setCsv] = useState([])
   const [monthBasePassenger, setMonthBasePassenger] = useState([])
   const [busBasePassenger, setBusBasePassenger] = useState([])
+  // const [select, setSelect] = useState('2019-01')
 
   const getCsvWithCallback = useCallback(async () => {
     try {
-      const url = 'http://localhost:3001/csv'
+      const url = `http://localhost:5000/api/bus`
       const axiosObj = await axios.get(url)
-      const res = await axiosObj.data
+      console.log(axiosObj);
+      const res = await axiosObj.data.buses
       setCsv(res)
       console.log(csv);
     } catch (e) {
@@ -137,9 +139,9 @@ function App() {
     <Layout>
       <VerticalBarChart monthBasePassenger={monthBasePassenger} />
       <HorizontalBarChart monthBasePassenger={monthBasePassenger} />
-      <LineChart data={data} labels={labels} />
-      <StackedBarChart data={data} labels={labels} />
-      <StackedBarChartWithGroups data={data} labels={labels} />
+      <LineChart monthBasePassenger={monthBasePassenger} />
+      <StackedBarChart monthBasePassenger={monthBasePassenger} />
+      <StackedBarChartWithGroups monthBasePassenger={monthBasePassenger} />
       <FloatingBarChart data={data} labels={labels} />
       <BarChartBoarderRadius data={data} labels={labels} />
       <MultiAxisLineChart data={data} labels={labels} />

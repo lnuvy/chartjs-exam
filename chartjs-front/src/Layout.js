@@ -1,6 +1,7 @@
 function Layout(props) {
 
-  const {children} = props;
+  const index = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  const { children } = props;
   const layoutStyle = {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
@@ -9,7 +10,7 @@ function Layout(props) {
 
   const myChildren = children.map((child) => {
     const childs = {
-      border: "1px solid rgba(0, 0, 225, 1)",
+      border: "1px solid rgba(0, 0, 0, 1)",
     };
     return (
       <div style={childs}>
@@ -19,7 +20,7 @@ function Layout(props) {
   })
 
   return (
-    <div style={layoutStyle}>
+    <div style={layoutStyle} key={index.map((i) => i)}>
       {myChildren}
     </div>
   );

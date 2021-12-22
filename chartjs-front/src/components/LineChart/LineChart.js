@@ -3,8 +3,7 @@ import { useEffect, useRef } from 'react';
 
 function LineChart(props) {
 
-  const {data, labels} = props
-
+  const { monthBasePassenger: mp } = props
   const canvasDom = useRef(null);
 
   useEffect(() => {
@@ -12,10 +11,11 @@ function LineChart(props) {
     const lineChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: labels,
+        labels: mp.map((row) => (row.month)),
         datasets: [
           {
-            data: data
+            label: "월별 버스 승/하차 합계",
+            data: mp.map((row) => (row.data.sum)),
           },
         ],
       },
@@ -23,7 +23,7 @@ function LineChart(props) {
     return () => {
       lineChart.destroy();
     }
-  }, []);
+  }, [mp]);
 
 
   return (

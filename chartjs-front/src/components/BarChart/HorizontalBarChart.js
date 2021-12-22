@@ -13,6 +13,7 @@ function HorizontalBarChart(props) {
         labels: mp.map((row) => (row.month)),
         datasets: [
           {
+            label: "월별 버스 승/하차 합계",
             data: mp.map((row) => (row.data.sum)),
           },
         ],
