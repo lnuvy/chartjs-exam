@@ -17,34 +17,44 @@ function StackedBarChartWithGroups(props) {
             data: mp.map((row) => (row.data.sum)),
             backgroundColor: 'rgba(255, 0, 0, 0.3)',
             stack: 'Group 0',
+
           },
           {
             label: "월별 버스 승차 통계",
             data: mp.map((row) => (row.data.getIn)),
             backgroundColor: 'rgba(0, 255, 0, 0.3)',
             stack: 'Group 1',
+
           },
           {
             label: "월별 버스 하차 통계",
             data: mp.map((row) => (row.data.getOff)),
             backgroundColor: 'rgba(0, 0, 255, 0.3)',
             stack: 'Group 1',
+
           },
         ],
       },
       options: {
+        plugins: {
+          // title: {
+          //   display: true,
+          //   text: 'Chart.js Bar Chart - Stacked'
+          // },
+        },
+        responsive: true,
+        interaction: {
+          intersect: false,
+        },
         scales: {
           x: {
             stacked: true,
           },
           y: {
-            stacked: true,
-          },
-        },
-        interaction: {
-          intersect: false,
-        },
-      },
+            stacked: true
+          }
+        }
+      }
     });
 
     return () => {

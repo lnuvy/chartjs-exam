@@ -3,7 +3,7 @@ import Chart from 'chart.js/auto';
 
 
 function BarChartBoarderRadius(props) {
-  const {data, labels} = props
+  const { data, labels } = props
 
   const canvasDom = useRef(null);
 
@@ -23,11 +23,15 @@ function BarChartBoarderRadius(props) {
           },
           {
             data: data,
-            backgroundColor: 'rgba(0, 255, 0, 0.3)'
+            backgroundColor: 'rgba(0, 255, 0, 0.3)',
+            borderRadius: 10,
+            borderSkipped: false,
           },
           {
             data: data,
-            backgroundColor: 'rgba(0, 0, 255, 0.3)'
+            backgroundColor: 'rgba(0, 0, 255, 0.3)',
+            borderRadius: 10,
+            borderSkipped: false,
           },
         ],
       },

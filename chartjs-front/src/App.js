@@ -5,7 +5,6 @@ import VerticalBarChart from './components/BarChart/VerticalBarChart';
 import HorizontalBarChart from './components/BarChart/HorizontalBarChart'
 import StackedBarChart from './components/BarChart/StackedBarChart';
 import StackedBarChartWithGroups from './components/BarChart/StackedBarChartWithGroups';
-import FloatingBarChart from './components/BarChart/FloatingBarChart';
 import BarChartBoarderRadius from './components/BarChart/BarChartBoarderRadius';
 
 import LineChart from './components/LineChart/LineChart';
@@ -142,7 +141,6 @@ function App() {
       <LineChart monthBasePassenger={monthBasePassenger} />
       <StackedBarChart monthBasePassenger={monthBasePassenger} />
       <StackedBarChartWithGroups monthBasePassenger={monthBasePassenger} />
-      <FloatingBarChart data={data} labels={labels} />
       <BarChartBoarderRadius data={data} labels={labels} />
       <MultiAxisLineChart data={data} labels={labels} />
       <SteppedLineChart data={data} labels={labels} />
