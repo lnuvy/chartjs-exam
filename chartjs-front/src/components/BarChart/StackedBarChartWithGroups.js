@@ -41,6 +41,9 @@ function StackedBarChartWithGroups(props) {
           //   display: true,
           //   text: 'Chart.js Bar Chart - Stacked'
           // },
+          legend: {
+            display: false,
+          },
         },
         responsive: true,
         interaction: {

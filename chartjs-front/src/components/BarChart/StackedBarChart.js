@@ -32,6 +32,11 @@ function StackedBarChart(props) {
         // border: '5px solid rgba(255, 0, 0, 0.5)'
       },
       options: {
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
         scales: {
           x: {
             stacked: true,
@@ -42,6 +47,7 @@ function StackedBarChart(props) {
         },
       },
     });
+
 
     return () => {
       stackedBarChart.destroy();

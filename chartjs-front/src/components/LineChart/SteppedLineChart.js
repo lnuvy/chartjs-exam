@@ -3,8 +3,7 @@ import { useEffect, useRef } from 'react';
 
 function SteppedLineChart(props) {
 
-  const {data, labels} = props
-
+  const { monthBasePassenger: mp } = props
   const canvasDom = useRef(null);
 
   useEffect(() => {
@@ -12,15 +11,23 @@ function SteppedLineChart(props) {
     const steppedLineChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: labels,
+        labels: mp.map((row) => (row.month)),
         datasets: [
           {
-            data: data,
+            label: "월별 버스 승/하차 합계",
+            data: mp.map((row) => (row.data.sum)),
             stepped: true,
+            borderColor: 'rgba(244, 53, 32, 0.5)',
+            backgroundColor: 'rgba(244, 53, 32, 0.7)',
           },
         ],
       },
       options: {
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
         interaction: {
           intersect: false,
           axis: 'x'
@@ -30,7 +37,7 @@ function SteppedLineChart(props) {
     return () => {
       steppedLineChart.destroy();
     }
-  }, []);
+  }, [mp]);
 
 
   return (

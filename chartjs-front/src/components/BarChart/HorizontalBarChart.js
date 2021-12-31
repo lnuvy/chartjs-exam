@@ -21,6 +21,10 @@ function HorizontalBarChart(props) {
       options: {
         indexAxis: "y",
         plugins: {
+          title: {
+            display: true,
+            text: '2019 대구버스 승/하차 합계 - BarChart'
+          },
           legend: {
             display: false,
           },

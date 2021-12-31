@@ -5,19 +5,19 @@ import VerticalBarChart from './components/BarChart/VerticalBarChart';
 import HorizontalBarChart from './components/BarChart/HorizontalBarChart'
 import StackedBarChart from './components/BarChart/StackedBarChart';
 import StackedBarChartWithGroups from './components/BarChart/StackedBarChartWithGroups';
-import BarChartBoarderRadius from './components/BarChart/BarChartBoarderRadius';
+// import BarChartBoarderRadius from './components/BarChart/BarChartBoarderRadius';
 
 import LineChart from './components/LineChart/LineChart';
+import MultiLineChart from './components/LineChart/MultiLineChart';
 import MultiAxisLineChart from './components/LineChart/MultiAxisLineChart';
 import SteppedLineChart from './components/LineChart/SteppedLineChart';
 
+import ComboBarLineChart from './components/OtherChart/ComboBarLineChart'
 import ScatterChart from './components/OtherChart/ScatterChart';
 
 import Layout from './Layout';
 
 function App() {
-  const data = [50, 30, 30, 35, 40]
-  const labels = [2017, 2018, 2019, 2020, 2021]
   const [csv, setCsv] = useState([])
   const [monthBasePassenger, setMonthBasePassenger] = useState([])
   const [busBasePassenger, setBusBasePassenger] = useState([])
@@ -25,12 +25,13 @@ function App() {
 
   const getCsvWithCallback = useCallback(async () => {
     try {
-      const url = `http://localhost:5000/api/bus`
-      const axiosObj = await axios.get(url)
-      console.log(axiosObj);
+      const NODE_URL = `http://localhost:5000/api/bus`
+      // const SPRING_URL = `http://localhost:8080/buses/test`
+      const axiosObj = await axios.get(NODE_URL)
+      // console.log(axiosObj);
       const res = await axiosObj.data.buses
       setCsv(res)
-      console.log(csv);
+      // console.log(csv);
     } catch (e) {
       console.log(e)
     }
@@ -136,14 +137,15 @@ function App() {
 
   return (
     <Layout>
-      <VerticalBarChart monthBasePassenger={monthBasePassenger} />
       <HorizontalBarChart monthBasePassenger={monthBasePassenger} />
       <LineChart monthBasePassenger={monthBasePassenger} />
-      <StackedBarChart monthBasePassenger={monthBasePassenger} />
+      <VerticalBarChart monthBasePassenger={monthBasePassenger} />
+      <SteppedLineChart monthBasePassenger={monthBasePassenger} />
       <StackedBarChartWithGroups monthBasePassenger={monthBasePassenger} />
-      <BarChartBoarderRadius data={data} labels={labels} />
-      <MultiAxisLineChart data={data} labels={labels} />
-      <SteppedLineChart data={data} labels={labels} />
+      <MultiLineChart monthBasePassenger={monthBasePassenger} />
+      <StackedBarChart monthBasePassenger={monthBasePassenger} />
+      <MultiAxisLineChart monthBasePassenger={monthBasePassenger} />
+      <ComboBarLineChart monthBasePassenger={monthBasePassenger} />
       <ScatterChart busBasePassenger={busBasePassenger} />
     </Layout>
   );

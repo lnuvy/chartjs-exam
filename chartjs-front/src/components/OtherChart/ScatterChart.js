@@ -6,6 +6,8 @@ function ScatterChart(props) {
   const { busBasePassenger: bp } = props
   const canvasDom = useRef(null)
 
+  console.log(bp);
+
   useEffect(() => {
     const ctx = canvasDom.current.getContext('2d')
     const scatterChart = new Chart(ctx, {
@@ -15,7 +17,7 @@ function ScatterChart(props) {
           {
             data: bp.reduce((acc, cur) => {
               cur['data'].forEach((summary) => {
-                acc.push({
+                acc.push({  
                   x: summary.getIn,
                   y: summary.getOff,
                 })
@@ -51,4 +53,4 @@ function ScatterChart(props) {
 
 }
 
-export default ScatterChart
+export default ScatterChart;
