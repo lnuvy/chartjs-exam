@@ -17,8 +17,8 @@ function MultiAxisLineChart(props) {
             label: "월별 버스 승차 통계",
             data: mp.map((row) => (row.data.getIn)),
             yAxisID: 'y',
-          borderColor: 'rgba(53, 244, 32, 0.5)',
-          backgroundColor: 'rgba(53, 244, 32, 0.7)'
+            borderColor: 'rgba(53, 244, 32, 0.5)',
+            backgroundColor: 'rgba(53, 244, 32, 0.7)'
           },
           {
             label: "월별 버스 하차 통계",

@@ -20,6 +20,20 @@ function SteppedLineChart(props) {
             borderColor: 'rgba(244, 53, 32, 0.5)',
             backgroundColor: 'rgba(244, 53, 32, 0.7)',
           },
+          // {
+          //   label: "월별 버스 승차 통계",
+          //   data: mp.map((row) => (row.data.getIn)),
+          //   stepped: true,
+          //   borderColor: 'rgba(53, 244, 32, 0.5)',
+          //   backgroundColor: 'rgba(53, 244, 32, 0.7)'
+          // },
+          // {
+          //   label: "월별 버스 하차 통계",
+          //   data: mp.map((row) => (row.data.getOff)),
+          //   stepped: true,
+          //   borderColor: 'rgba(53, 32, 244, 0.5)',
+          //   backgroundColor: 'rgba(53, 32, 244, 0.7)'
+          // },
         ],
       },
       options: {
