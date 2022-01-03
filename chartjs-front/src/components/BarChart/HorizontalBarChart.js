@@ -5,6 +5,8 @@ function HorizontalBarChart(props) {
   const { monthBasePassenger: mp } = props
   const canvasDom = useRef(null);
 
+  // console.log(mp);
+
   useEffect(() => {
     const ctx = canvasDom.current.getContext('2d');
     const horizontalBarChart = new Chart(ctx, {

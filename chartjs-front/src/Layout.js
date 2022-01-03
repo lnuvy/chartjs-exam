@@ -1,8 +1,6 @@
 function Layout(props) {
 
   const { children } = props;
-  
-  console.log(children);
 
   const layoutStyle = {
     display: 'grid',

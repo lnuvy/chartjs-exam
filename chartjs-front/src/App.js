@@ -25,7 +25,7 @@ function App() {
 
   const getCsvWithCallback = useCallback(async () => {
     try {
-      const NODE_URL = `http://localhost:5000/api/bus`
+      const NODE_URL = `http://localhost:5000/api/buses`
       // const SPRING_URL = `http://localhost:8080/buses/test`
       const axiosObj = await axios.get(NODE_URL)
       // console.log(axiosObj);
@@ -49,10 +49,7 @@ function App() {
         const month = cur['년월']
         const sum = Number(cur['합계'])
         const type = cur['구분']
-        // acc.set(월, {
-        //   month: 월,
-        //   sum: 월 합계,
-        // });
+
         if (!acc.has(month)) {
           acc.set(month, {
             sum: 0,
@@ -60,6 +57,8 @@ function App() {
             getOff: 0,
           })
         }
+
+        
 
         const thisMonth = acc.get(month)
         const getIn = thisMonth['getIn']
